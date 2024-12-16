@@ -20,17 +20,17 @@ public class Player : MonoBehaviour
         Debug.Log("PlayerSpeed: " + playerRb.velocity);
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartGrapple();
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            StopGrapple();
-        }
-    }
+    // void LateUpdate()
+    // {
+    //     if (Input.GetMouseButtonDown(0))
+    //     {
+    //         StartGrapple();
+    //     }
+    //     else if (Input.GetMouseButtonUp(0))
+    //     {
+    //         StopGrapple();
+    //     }
+    // }
 
 
     /// <summary>
@@ -78,6 +78,38 @@ public class Player : MonoBehaviour
         }
     }
 
+    void StartGrapple(Vector3 mousePoint)
+    {
+        //Ray ray = transform.position; 
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, mousePoint - transform.position, out hit, Mathf.Infinity, whatIsGrappleable))
+        {
+
+            grapplePoint = hit.point;
+            joint = player.gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = grapplePoint;
+
+            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+
+            // The distance grapple will try to keep from grapple point.
+            joint.maxDistance = distanceFromPoint * 0.8f;
+            joint.minDistance = 0f; // Set to 0 to pull the player all the way to the grapple point
+
+            // Adjust these values to fit your game.
+            joint.spring = _jointSpring; // Increase spring value to pull the player faster
+            joint.damper = 7f;
+            joint.massScale = 4.5f;
+
+            // Add a force to pull the player towards the grapple point
+            //playerRb.AddForce((grapplePoint - player.position).normalized * 2f, ForceMode.Impulse);
+
+            // Start the coroutine to gradually decrease the rope length
+            StartCoroutine(GrapplePull());
+        }
+    }
+
 
     /// <summary>
     /// Call whenever we want to stop a grapple
@@ -98,24 +130,15 @@ public class Player : MonoBehaviour
         return grapplePoint;
     }
 
-    /// <summary>
-    /// Обновление позиции верёвки
-    /// </summary>
-    /*private void UpdateRope()
+    void OnEnable()
     {
-        // Устанавливаем начальную и конечную точки LineRenderer
-        lineRenderer.SetPosition(0, player.position); // Начало верёвки (позиция игрока)
-        lineRenderer.SetPosition(1, hookTarget); // Конец верёвки (точка попадания крюка)
+        MouseControls.OnMouseClick += StartGrapple;
+        MouseControls.OnMouseRelease += StopGrapple;
     }
 
-    /// <summary>
-    /// Отключение верёвки
-    /// </summary>
-    private void DisableRope()
+    void OnDisable()
     {
-        if (lineRenderer.enabled)
-        {
-            lineRenderer.enabled = false;
-        }
-    }*/
+        MouseControls.OnMouseClick -= StartGrapple;
+        MouseControls.OnMouseRelease -= StopGrapple;
+    }
 }
