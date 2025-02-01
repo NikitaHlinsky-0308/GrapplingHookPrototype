@@ -1,0 +1,9 @@
+com.DefaultCompany.RopeRun.launcher-pngs-0 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\generated\res\pngs\debug
+com.DefaultCompany.RopeRun.launcher-resValues-1 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\generated\res\resValues\debug
+com.DefaultCompany.RopeRun.launcher-rs-2 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\generated\res\rs\debug
+com.DefaultCompany.RopeRun.launcher-mergeDebugResources-3 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.DefaultCompany.RopeRun.launcher-mergeDebugResources-4 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.DefaultCompany.RopeRun.launcher-merged_res-5 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\build\intermediates\merged_res\debug
+com.DefaultCompany.RopeRun.launcher-debug-6 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\debug\res
+com.DefaultCompany.RopeRun.launcher-main-7 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\res
+com.DefaultCompany.RopeRun.launcher-packaged_res-8 D:\UnityProjects\RopeRun\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\packaged_res\debug

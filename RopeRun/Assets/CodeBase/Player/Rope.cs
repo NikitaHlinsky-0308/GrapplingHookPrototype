@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CodeBase.Player;
 using UnityEngine;
 
 
@@ -8,7 +9,7 @@ public class Rope : MonoBehaviour
     private Spring spring;
     private LineRenderer lr;
     private Vector3 currentGrapplePosition;
-    public Player grapplingGun;
+    public PlayerController grapplingGun;
     public int quality;
     public float damper;
     public float strength;
